@@ -17,7 +17,7 @@ const SignupPage = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://test-deployment-nu.vercel.app/api/signup", inputs)
+            const res = await axios.post("https://test-deployment-mocha.vercel.app/api/signup", inputs)
             console.log(res)
             alert("You have been sign in ..")
         } catch (error) {
