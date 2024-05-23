@@ -17,7 +17,7 @@ const LoginPage = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("", inputs)
+            const res = await axios.post("https://test-deployment-mocha.vercel.app/api/login", inputs)
             console.log(res)
             alert("You have been logged in ..")
         } catch (error) {
