@@ -1,19 +1,19 @@
 import connect from '@/app/utils/db';
 import Client from '@/app/models/Client';
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 
-export async function POST(request: Request) {
-
-    const { email, password } = await request.json();
+export async function POST(req: NextRequest, res: NextResponse) {
+    const { email, password } = await req.json();
 
     if (!email || !password) {
-        return new NextResponse('Email and password are required', { status: 400 });
+        return new NextResponse('Invalid Email and Password', { status: 400 })
     }
+
 
     try {
         await connect();
-        const client = await Client.findOne({ email });
+        const client = await Client.findOne({ email }).exec();
 
         if (!client) {
             return new NextResponse('Invalid Credentials', { status: 400 });
